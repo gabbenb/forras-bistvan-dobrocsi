@@ -35,7 +35,6 @@ app.get('/foglalasok', (req, res) => {
                  LEFT JOIN foglalasok ON szobak.szazon = foglalasok.szoba
                  GROUP BY szobak.sznev
                  ORDER BY vendegejszakak ASC, vendegek ASC`;
- 
     db.query(sql, (error, results) => {
         if (error) {
             console.error(error);
@@ -52,7 +51,6 @@ app.get('/foglaltsag/:szazon', (req, res) => {
                  JOIN vendegek ON foglalasok.vendeg = vendegek.vsorsz
                  WHERE foglalasok.szoba = ?
                  ORDER BY vendegek.vnev ASC`;
- 
     db.query(sql, [szazon], (error, results) => {
         if (error) {
             console.error(error);
